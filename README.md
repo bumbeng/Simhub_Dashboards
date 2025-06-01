@@ -15,4 +15,4 @@
   - working analog clock
   - Odometer
   - ABS,TC,headlight,handbrake,reserve, turn indicator lights
-![Screenshot 2025-06-01 110924](https://github.com/user-attachments/assets/af775313-e0a8-4c8b-aa55-f76e0228147f)
+![Screenshot 2025-06-01 114143](https://github.com/user-attachments/assets/1e25aa8d-8dca-4278-8654-73bb61aecb60)
