@@ -16,3 +16,10 @@
   - Odometer
   - ABS,TC,headlight,handbrake,reserve, turn indicator lights
 ![Screenshot 2025-06-01 114143](https://github.com/user-attachments/assets/1e25aa8d-8dca-4278-8654-73bb61aecb60)
+
+#BMW Dashboard
+  - Full working only with UDP Connector Plugin
+  - ABS,TC,headlight,handbrake, turn indicator lights
+  - Remaining range calculation
+  - Rpm Gauge change automaticaly between 8000 and 10000rpm
+![Screenshot 2025-06-07 232347](https://github.com/user-attachments/assets/026d5820-44f1-47dc-b35c-6ec3aeee36b7)
