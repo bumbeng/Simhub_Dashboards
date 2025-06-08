@@ -10,16 +10,18 @@
 ![Screenshot 2025-06-01 110232](https://github.com/user-attachments/assets/e94d67ba-2582-40b3-b53c-d52103582a67)
 ![Screenshot 2025-06-01 110327](https://github.com/user-attachments/assets/9b6c1df5-e11e-478a-a04f-7dbbdae5efde)
 
+
 #W124 Dashboard AC
   - Full working only with UDP Connector Plugin
   - working analog clock
   - Odometer
   - ABS,TC,headlight,handbrake,reserve, turn indicator lights
-![Screenshot 2025-06-01 114143](https://github.com/user-attachments/assets/1e25aa8d-8dca-4278-8654-73bb61aecb60)
+![Screenshot 2025-06-08 135105](https://github.com/user-attachments/assets/4fc1fe87-c9cf-472e-bd61-8ddcd582af68)
+
 
 #BMW Dashboard
   - Full working only with UDP Connector Plugin
   - ABS,TC,headlight,handbrake, turn indicator lights
   - Remaining range calculation
   - Rpm Gauge change automaticaly between 8000 and 10000rpm
-![Screenshot 2025-06-08 135105](https://github.com/user-attachments/assets/96ac9dac-4302-4cbb-9b60-79f286311ea7)
+![Screenshot 2025-06-07 232347](https://github.com/user-attachments/assets/a2114744-7836-4764-8f1a-60632c9b097b)
