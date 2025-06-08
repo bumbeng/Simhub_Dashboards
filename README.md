@@ -24,4 +24,4 @@
   - ABS,TC,headlight,handbrake, turn indicator lights
   - Remaining range calculation
   - Rpm Gauge change automaticaly between 8000 and 10000rpm
-![Screenshot 2025-06-07 232347](https://github.com/user-attachments/assets/a2114744-7836-4764-8f1a-60632c9b097b)
+![Screenshot 2025-06-08 161418](https://github.com/user-attachments/assets/f90d0a11-01b6-43f3-ab36-0dc198c21d7b)
