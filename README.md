@@ -2,7 +2,7 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
 
 # Simhub_Dashboards
 
-#Audi Dashboard AC
+## Audi Dashboard AC
   - Full working only with UDP Connector Plugin
   - Rpm Gauge change automaticaly between 7000 and 10000rpm
   - ABS, TC lights
@@ -13,7 +13,7 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
 ![Screenshot 2025-06-01 110327](https://github.com/user-attachments/assets/9b6c1df5-e11e-478a-a04f-7dbbdae5efde)
 
 
-#W124 Dashboard AC
+## W124 Dashboard AC
   - Full working only with UDP Connector Plugin
   - working analog clock
   - Odometer
@@ -21,7 +21,7 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
 ![Screenshot 2025-06-08 135105](https://github.com/user-attachments/assets/4fc1fe87-c9cf-472e-bd61-8ddcd582af68)
 
 
-#BMW Dashboard
+## BMW Dashboard
   - Full working only with UDP Connector Plugin
   - ABS,TC,headlight,handbrake, turn indicator lights
   - Remaining range calculation
