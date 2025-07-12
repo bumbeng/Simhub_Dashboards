@@ -9,10 +9,9 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
   - Odometer
   - Remaining range calculation
 
-![Screenshot 2025-06-01 110158](https://github.com/user-attachments/assets/51a2dda1-5bf6-4d92-974b-5e8787743d06)
-![Screenshot 2025-06-01 110232](https://github.com/user-attachments/assets/e94d67ba-2582-40b3-b53c-d52103582a67)
-![Screenshot 2025-06-01 110327](https://github.com/user-attachments/assets/9b6c1df5-e11e-478a-a04f-7dbbdae5efde)
-
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-06-01 110232" src="https://github.com/user-attachments/assets/057f9bc1-da18-46f9-b865-e352e8dbc8bf" />
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-06-01 110327" src="https://github.com/user-attachments/assets/b5bcbe51-6a8a-4a19-8048-43618f3c82a0" />
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-06-01 110158" src="https://github.com/user-attachments/assets/a541f0d7-18d8-4303-9436-287bf164c2d1" />
 
 ## W124 Dashboard AC
   - Full working only with UDP Connector Plugin
@@ -20,8 +19,7 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
   - Odometer
   - ABS,TC,headlight,handbrake,reserve, turn indicator lights
 
-![Screenshot 2025-06-08 135105](https://github.com/user-attachments/assets/4fc1fe87-c9cf-472e-bd61-8ddcd582af68)
-
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-06-08 135105" src="https://github.com/user-attachments/assets/cfb13ff4-9207-4a87-acc8-24707f7c6026" />
 
 ## BMW Dashboard
   - Full working only with UDP Connector Plugin
@@ -29,4 +27,13 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
   - Remaining range calculation
   - Rpm Gauge change automaticaly between 8000 and 10000rpm
 
-![Screenshot 2025-06-08 161418](https://github.com/user-attachments/assets/f90d0a11-01b6-43f3-ab36-0dc198c21d7b)
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-06-08 161418" src="https://github.com/user-attachments/assets/5209dcd7-cfa6-4a9a-9539-6fdb4bac6d3d" />
+
+## Mercedes AMG Dashboard
+  - Full working only with UDP Connector Plugin
+  - ABS,TC,headlight,handbrake, turn indicator lights
+  - Rpm Gauge use prozentual varibale
+
+<img width="800" height="360" style="border-radius: 5px" alt="Screenshot 2025-07-12 100755" src="https://github.com/user-attachments/assets/fabbffd5-05db-4e14-806a-a01590b788ff" />
+
+
