@@ -33,6 +33,12 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
   - Full working only with UDP Connector Plugin
   - ABS,TC,headlight,handbrake, turn indicator lights
   - Rpm Gauge use prozentual varibale
-  - 
+
 <img width="800" height="360" style="border-radius: 10px" alt="Screenshot 2025-07-12 161537" src="https://github.com/user-attachments/assets/fda583c9-7377-415c-9a41-76c6fe640b8a" />
 
+## Audi 2 Dashboard
+  - Full working only with UDP Connector Plugin
+  - ABS,TC,headlight,handbrake, turn indicator lights
+  - Rpm Gauge use prozentual varibale
+
+<img width="800" height="360" style="border-radius: 10px" alt="Screenshot 2025-07-13 221553" src="https://github.com/user-attachments/assets/64567cf7-286e-49cf-bda9-a02a4831fb82" />
