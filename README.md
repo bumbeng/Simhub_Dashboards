@@ -4,6 +4,8 @@ Lua Script
 - I recently added an lua script for udpconnector_plugin to read the power and torque chart from ui_car.json max torque and max power included!
 - If you want to use this script, the folder destination might be changed for your PC!
 - max power is not aviable in all cars but can add manually
+- its very buggy because format of files is different, but i work on it 
+
 # Simhub_Dashboards
 
 ## Audi Dashboard AC
