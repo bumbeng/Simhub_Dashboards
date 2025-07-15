@@ -47,3 +47,9 @@ Lua Script
   - Rpm Gauge use prozentual variable
 
 <img width="800" height="360" style="border-radius: 10px" alt="Screenshot 2025-07-13 221553" src="https://github.com/user-attachments/assets/64567cf7-286e-49cf-bda9-a02a4831fb82" />
+
+  - with lua script
+  - 
+<img width="800" height="360" alt="Screenshot 2025-07-15 183052" src="https://github.com/user-attachments/assets/64050e3c-1429-4eef-9584-f30a221db7bd" />
+
+
