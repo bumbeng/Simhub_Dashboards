@@ -1,5 +1,10 @@
 Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-example-with-additional-datas.74471/
 
+Lua Script
+- I recently added an lua script for udpconnector_plugin to read the power and torque chart from ui_car.json max torque and max power included!
+- If you want to use this script, the folder destination might be changed for your PC!
+- Some cars doesn't have torque specs in this file, actual i wrote this in ui_car.json by myself but in future i will use the maximum value from chart.
+
 # Simhub_Dashboards
 
 ## Audi Dashboard AC
