@@ -137,20 +137,11 @@ if carJsonPath then
         for i, point in ipairs(powerCurve) do
             print(string.format("[%d] RPM=%d PS=%d", i, point[1], point[2]))
         end
-        local function findMaxValue(curve)
 
-        local maxValue = 0
-            for i = 1, #curve do
-                if curve[i][2] > maxValue then
-                maxValue = curve[i][2]
-                end
-            end
-            return maxValue
-        end
-        
-        bhp = findMaxValue(powerCurve)
-        maxTorque = findMaxValue(torqueCurve)
-
+        local bhp_raw = parseSpecValue(jsonContent, "bhp")
+        local torque_raw = parseSpecValue(jsonContent, "torque")
+        bhp = tonumber(bhp_raw:match("(%d+)")) or 0
+        maxTorque = tonumber(torque_raw:match("(%d+)")) or 0
 
         print("✅ BHP:", bhp)
         print("✅ Max Torque:", maxTorque)
