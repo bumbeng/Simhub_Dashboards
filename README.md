@@ -4,10 +4,10 @@ Lua Script
 put file into extension folder from udpconnector example C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\apps\lua\SimHubUDPConnector\extensions
 
 simhub variables:
-[UDPConnectorDataPlugin.currentpower] 
-[UDPConnectorDataPlugin.bhp] (max power)
-[UDPConnectorDataPlugin.torque] (max torque)
-[UDPConnectorDataPlugin.currenttorque]
+- [UDPConnectorDataPlugin.currentpower] 
+- [UDPConnectorDataPlugin.bhp] (max power)
+- [UDPConnectorDataPlugin.torque] (max torque)
+- [UDPConnectorDataPlugin.currenttorque]
 
 - I recently added an lua script for udpconnector_plugin to read the power and torque chart from ui_car.json max torque and max power included!
 - If you want to use this script, the folder destination might be changed for your PC!
