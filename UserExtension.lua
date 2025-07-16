@@ -16,27 +16,68 @@ local function normalizeString(text)
     return text:lower():gsub("[^%w]", "")
 end
 
+local function splitWords(text)
+    local words = {}
+    for word in text:lower():gsub("[^%w%s]", ""):gmatch("%S+") do
+        table.insert(words, word)
+    end
+    return words
+end
+
+local function folderMatches(carWords, folderName)
+    local normalizedFolder = normalizeString(folderName)
+    local matches = 0
+    for _, word in ipairs(carWords) do
+        if normalizedFolder:find(word, 1, true) then
+            matches = matches + 1
+        end
+    end
+    return matches
+end
+
 local function findCarFolder(carName)
-    local normalizedCarName = normalizeString(carName)
+    local carWords = splitWords(carName)
+    local totalWords = #carWords
+    print("🔍 search folder:", carName)
+
     local command = 'dir "' .. basePath .. '"'
     local pipe = io.popen(command)
-    if not pipe then return nil end
+    if not pipe then
+        print("❌ folder search failed")
+        return nil
+    end
     local result = pipe:read("*all")
     pipe:close()
+
+    local bestMatch = nil
+    local bestScore = 0
 
     for line in result:gmatch("[^\r\n]+") do
         local folder = line:match("<DIR>%s+(.+)")
         if folder then
             folder = folder:gsub("^%s+", ""):gsub("%s+$", "")
-            local normalizedFolder = normalizeString(folder)
-            if normalizedFolder:find(normalizedCarName, 1, true) then
-                return basePath .. folder .. "/ui/ui_car.json"
+
+            local score = folderMatches(carWords, folder)
+            local percentage = math.floor((score / totalWords) * 100)
+
+            if score > bestScore then
+                bestMatch = folder
+                bestScore = score
             end
         end
     end
 
-    return nil
+    if bestMatch then
+        local bestPercentage = math.floor((bestScore / totalWords) * 100)
+        print(string.format("\n✅ best match: %s (%d%% match)", bestMatch, bestPercentage))
+        return basePath .. bestMatch .. "/ui/ui_car.json"
+    else
+        print("❌ no folder found with:", carName)
+        return nil
+    end
 end
+
+
 
 local function extractCompleteArray(text, startPos)
     local bracketLevel = 0
@@ -86,11 +127,6 @@ local function parseCurveArray(text, arrayName)
         table.insert(array, { numbers[i], numbers[i+1] })
     end
 
-    print(arrayName .. " Punkte: " .. tostring(#array))
-    for i, point in ipairs(array) do
-        print(string.format("[%d] %.0f RPM → %.2f", i, point[1], point[2]))
-    end
-
     return array
 end
 
@@ -123,6 +159,16 @@ local carJsonPath = findCarFolder(carName)
 
 local torqueCurve, powerCurve, bhp, maxTorque = {}, {}, 0, 0
 
+local function getCurveMaximum(curve)
+    local maxVal = 0
+    for _, point in ipairs(curve) do
+        if point[2] > maxVal then
+            maxVal = point[2]
+        end
+    end
+    return maxVal
+end
+
 if carJsonPath then
     local jsonContent = readFile(carJsonPath)
     if jsonContent then
@@ -131,8 +177,18 @@ if carJsonPath then
 
         local bhp_raw = parseSpecValue(jsonContent, "bhp")
         local torque_raw = parseSpecValue(jsonContent, "torque")
+
         bhp = tonumber(bhp_raw:match("(%d+)")) or 0
         maxTorque = tonumber(torque_raw:match("(%d+)")) or 0
+
+        if bhp == 0 and #powerCurve > 0 then
+            bhp = math.floor(getCurveMaximum(powerCurve) + 0.5)
+        end
+
+        if maxTorque == 0 and #torqueCurve > 0 then
+            maxTorque = math.floor(getCurveMaximum(torqueCurve) + 0.5)
+        end
+
 
         print("Max Torque (specs): " .. tostring(maxTorque) .. " Nm")
         print("Max Power (specs): " .. tostring(bhp) .. " PS")
@@ -153,7 +209,7 @@ end
 function UserExtension:update(dt, customData)
     local carState = ac.getCar(0)
     local currentRpm = math.floor(carState.rpm)
-    smoothedRpm = smoothedRpm * 0.98 + currentRpm * 0.02
+    smoothedRpm = smoothedRpm * 0.85 + currentRpm * 0.15
 
     if #torqueCurve > 0 and #powerCurve > 0 then
         currentTorque = getInterpolatedFromCurve(smoothedRpm, torqueCurve)
@@ -168,10 +224,6 @@ function UserExtension:update(dt, customData)
     customData.bhp = bhp
     customData.torque = maxTorque
 
-    print(string.format(
-        "RPM: %.0f | Torque: %d Nm | Power: %d PS",
-        smoothedRpm, currentTorque, currentPower
-    ))
 end
 
 return UserExtension
