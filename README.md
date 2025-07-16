@@ -13,7 +13,7 @@ simhub variables:
 - [UDPConnectorDataPlugin.bhp] (max power)
 - [UDPConnectorDataPlugin.torque] (max torque)
 - [UDPConnectorDataPlugin.currenttorque]
-- 
+
 put file into extension folder from udpconnector example C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\apps\lua\SimHubUDPConnector\extensions
 
 # Simhub_Dashboards
