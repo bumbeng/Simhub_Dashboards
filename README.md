@@ -3,16 +3,18 @@ Plugin: https://www.overtake.gg/downloads/simhub-udpconnector-assetto-app-exampl
 Lua Script
 put file into extension folder from udpconnector example C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\apps\lua\SimHubUDPConnector\extensions
 
+- I recently added an lua script for udpconnector_plugin to read the power and torque chart from ui_car.json max torque and max power included!
+- If you want to use this script, the folder destination might be changed for your PC!
+- max power is not aviable in all cars but can add manually
+- not all cars supported, modded cars might not work
+
 simhub variables:
 - [UDPConnectorDataPlugin.currentpower] 
 - [UDPConnectorDataPlugin.bhp] (max power)
 - [UDPConnectorDataPlugin.torque] (max torque)
 - [UDPConnectorDataPlugin.currenttorque]
-
-- I recently added an lua script for udpconnector_plugin to read the power and torque chart from ui_car.json max torque and max power included!
-- If you want to use this script, the folder destination might be changed for your PC!
-- max power is not aviable in all cars but can add manually
-- not all cars supported, modded cars might not work 
+- 
+put file into extension folder from udpconnector example C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\apps\lua\SimHubUDPConnector\extensions
 
 # Simhub_Dashboards
 
