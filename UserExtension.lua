@@ -12,73 +12,6 @@ local function readFile(path)
     return content
 end
 
-local function normalizeString(text)
-    return text:lower():gsub("[^%w]", "")
-end
-
-local function splitWords(text)
-    local words = {}
-    for word in text:lower():gsub("[^%w%s]", ""):gmatch("%S+") do
-        table.insert(words, word)
-    end
-    return words
-end
-
-local function folderMatches(carWords, folderName)
-    local normalizedFolder = normalizeString(folderName)
-    local matches = 0
-    for _, word in ipairs(carWords) do
-        if normalizedFolder:find(word, 1, true) then
-            matches = matches + 1
-        end
-    end
-    return matches
-end
-
-local function findCarFolder(carName)
-    local carWords = splitWords(carName)
-    local totalWords = #carWords
-    print("🔍 search folder:", carName)
-
-    local command = 'dir "' .. basePath .. '"'
-    local pipe = io.popen(command)
-    if not pipe then
-        print("❌ folder search failed")
-        return nil
-    end
-    local result = pipe:read("*all")
-    pipe:close()
-
-    local bestMatch = nil
-    local bestScore = 0
-
-    for line in result:gmatch("[^\r\n]+") do
-        local folder = line:match("<DIR>%s+(.+)")
-        if folder then
-            folder = folder:gsub("^%s+", ""):gsub("%s+$", "")
-
-            local score = folderMatches(carWords, folder)
-            local percentage = math.floor((score / totalWords) * 100)
-
-            if score > bestScore then
-                bestMatch = folder
-                bestScore = score
-            end
-        end
-    end
-
-    if bestMatch then
-        local bestPercentage = math.floor((bestScore / totalWords) * 100)
-        print(string.format("\n✅ best match: %s (%d%% match)", bestMatch, bestPercentage))
-        return basePath .. bestMatch .. "/ui/ui_car.json"
-    else
-        print("❌ no folder found with:", carName)
-        return nil
-    end
-end
-
-
-
 local function extractCompleteArray(text, startPos)
     local bracketLevel = 0
     local i = startPos
@@ -155,7 +88,9 @@ local function getInterpolatedFromCurve(rpm, curve)
 end
 
 local carName = ac.getCarID(0)
-local carJsonPath = findCarFolder(carName)
+local carJsonPath = basePath .. carName .. "/ui/ui_car.json"
+
+print("founded folder:", carName)
 
 local torqueCurve, powerCurve, bhp, maxTorque = {}, {}, 0, 0
 
