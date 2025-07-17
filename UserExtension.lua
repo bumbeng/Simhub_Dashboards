@@ -154,7 +154,7 @@ local function getInterpolatedFromCurve(rpm, curve)
     return 0
 end
 
-local carName = ac.getCarName(0)
+local carName = ac.getCarID(0)
 local carJsonPath = findCarFolder(carName)
 
 local torqueCurve, powerCurve, bhp, maxTorque = {}, {}, 0, 0
