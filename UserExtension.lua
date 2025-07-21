@@ -2,7 +2,7 @@ require("extensions.Extension")
 
 UserExtension = {}
 
-local basePath = "C:/Program Files (x86)/Steam/steamapps/common/assettocorsa/content/cars/"
+local basePath = local basePath = ac.dirname() .. "/../../../content/cars/"
 
 local function readFile(path)
     local file = io.open(path, "r")
