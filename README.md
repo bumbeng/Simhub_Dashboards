@@ -7,11 +7,11 @@ put file into extension folder from udpconnector example C:\Program Files (x86)\
 
 
 simhub variables:
-- [UDPConnectorDataPlugin.currentpower] 
-- [UDPConnectorDataPlugin.bhp]
-- [UDPConnectorDataPlugin.torque]
-- [UDPConnectorDataPlugin.currenttorque]
-
+- [UDPConnectorDataPlugin.TorquePowerExt_maxPowerHP]
+- [UDPConnectorDataPlugin.TorquePowerExt_currentPowerHP]
+- [UDPConnectorDataPlugin.TorquePowerExt_torqueNM]
+- [UDPConnectorDataPlugin.TorquePowerExt_currentTorqueNm]
+  
 # Simhub_Dashboards
 
 ## Audi Dashboard AC
