@@ -5,8 +5,11 @@ TorquePower = {}
 local powerLut = nil
 local maxPowerHP = 0
 local maxTorque = 0
-local maxBoost = 0
 local initialized = false
+local boostmax = 0
+local smoothTorque = 0
+local smoothPower = 0
+local alpha = 0.2
 
 function TorquePower:new(o)
   o = o or Extension:new(o)
@@ -19,7 +22,17 @@ end
 local function initializePowerLUT()
   local car = ac.getCar(0)
   powerLut = ac.DataLUT11.carData(car.index, "power.lut")
-  
+  local engineData = ac.INIConfig.carData(car.index, "engine.ini")
+  local turbo0 = engineData:get("TURBO_0", "DISPLAY_MAX_BOOST", 0)
+  local turbo1 = engineData:get("TURBO_1", "DISPLAY_MAX_BOOST", 0)
+if turbo0 > 0 then
+  boostmax = boostmax + turbo0
+end
+
+if turbo1 > 0 then
+  boostmax = boostmax + turbo1
+end
+
   for rpm = 0, 15000, 50 do
     local torque = powerLut:get(rpm)
     local power = torque * rpm / 9549
@@ -28,9 +41,8 @@ local function initializePowerLUT()
     if power > maxPowerHP then maxPowerHP = power end
   end
 
-  maxTorque = math.floor(maxTorque / 5 + 0.5) * 5
-  maxPowerHP = math.floor(maxPowerHP / 5 + 0.5) * 5
-
+  maxTorque = math.floor(((maxTorque / 5 + 0.5) * 5) * (1 + boostmax))
+  maxPowerHP = math.floor(((maxPowerHP / 5 + 0.5) * 5) * (1 + boostmax))
   initialized = true
 end
 
@@ -41,36 +53,28 @@ function TorquePower:update(dt, customData)
   end
 
   local car = ac.getCar(0)
-  local rpm = car.rpm or 0
-
-  local boost = car.turboBoost or 0
-
+  local rpm = (car.rpm * 0.85 + car.rpm * 0.15) or 0
+  local boost = car.turboBoost
   local rawTorque = powerLut:get(rpm)
   local correctedTorque = rawTorque * (1 + boost)
   local correctedPower = correctedTorque * rpm / 9549
 
-  correctedTorque = math.floor(correctedTorque / 5 + 0.5) * 5
-  correctedPower = math.floor(correctedPower / 5 + 0.5) * 5
+  smoothTorque = smoothTorque * (1 - alpha) + correctedTorque * alpha
+  smoothPower = smoothPower * (1 - alpha) + correctedPower * alpha
 
-  if correctedTorque > maxTorque then
-    maxTorque = correctedTorque
-  end
-  if correctedPower > maxPowerHP then
-    maxPowerHP = correctedPower
-  end
-  if boost > maxBoost then
-    maxBoost = boost
-  end
-  
+  local displayTorque = math.floor(smoothTorque / 5 + 0.5) * 5
+  local displayPower = math.floor(smoothPower / 5 + 0.5) * 5
+
   if car.rpm <= 400 then
-    correctedTorque = 0
-    correctedPower = 0
+    displayTorque = 0
+    displayPower = 0
   end
 
-  customData.TorquePowerExt_currentTorqueNm = correctedTorque
-  customData.TorquePowerExt_currentPowerHP = correctedPower
+  customData.TorquePowerExt_currentTorqueNm = displayTorque
+  customData.TorquePowerExt_currentPowerHP = displayPower
   customData.TorquePowerExt_torqueNM = maxTorque
   customData.TorquePowerExt_maxPowerHP = maxPowerHP
+  customData.TorquePowerExt_maxTurboBoost = boostmax
 end
 
 return TorquePower
