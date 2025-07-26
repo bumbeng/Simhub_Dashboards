@@ -11,6 +11,7 @@ simhub variables:
 - [UDPConnectorDataPlugin.TorquePowerExt_currentPowerHP]
 - [UDPConnectorDataPlugin.TorquePowerExt_torqueNM]
 - [UDPConnectorDataPlugin.TorquePowerExt_currentTorqueNm]
+- [UDPConnectorDataPlugin.TorquePowerExt_maxTurboBoost]
   
 # Simhub_Dashboards
 
