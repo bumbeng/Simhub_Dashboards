@@ -10,6 +10,7 @@ local boostmax = 0
 local smoothTorque = 0
 local smoothPower = 0
 local alpha = 0.2
+local car = ac.getCar(0)
 
 function TorquePower:new(o)
   o = o or Extension:new(o)
@@ -20,11 +21,11 @@ end
 
 
 local function initializePowerLUT()
-  local car = ac.getCar(0)
+
   powerLut = ac.DataLUT11.carData(car.index, "power.lut")
   local engineData = ac.INIConfig.carData(car.index, "engine.ini")
-  local turbo0 = engineData:get("TURBO_0", "DISPLAY_MAX_BOOST", 0)
-  local turbo1 = engineData:get("TURBO_1", "DISPLAY_MAX_BOOST", 0)
+  local turbo0 = engineData:get("TURBO_0", "WASTEGATE", 0)
+  local turbo1 = engineData:get("TURBO_1", "WASTEGATE", 0)
 if turbo0 > 0 then
   boostmax = boostmax + turbo0
 end
@@ -34,15 +35,15 @@ if turbo1 > 0 then
 end
 
   for rpm = 0, 15000, 50 do
-    local torque = powerLut:get(rpm)
-    local power = torque * rpm / 9549
+    local torque = powerLut:get(rpm) * (1 + boostmax)
+    local power = torque * 0.101972 * rpm / 725
 
     if torque > maxTorque then maxTorque = torque end
     if power > maxPowerHP then maxPowerHP = power end
   end
 
-  maxTorque = math.floor(((maxTorque / 5 + 0.5) * 5) * (1 + boostmax))
-  maxPowerHP = math.floor(((maxPowerHP / 5 + 0.5) * 5) * (1 + boostmax))
+  maxTorque = math.floor((maxTorque * 1.15) / 1 + 0.5) * 1
+  maxPowerHP = math.floor((maxPowerHP * 1.15) / 1 + 0.5) * 1
   initialized = true
 end
 
@@ -52,18 +53,17 @@ function TorquePower:update(dt, customData)
     if not powerLut then return end
   end
 
-  local car = ac.getCar(0)
-  local rpm = (car.rpm * 0.85 + car.rpm * 0.15) or 0
+  local rpm = car.rpm or 0
   local boost = car.turboBoost
-  local rawTorque = powerLut:get(rpm)
-  local correctedTorque = rawTorque * (1 + boost)
-  local correctedPower = correctedTorque * rpm / 9549
+  local rawTorque = powerLut:get(rpm) * (1 + boost)
+  local correctedTorque = rawTorque
+  local correctedPower =  correctedTorque * 0.101972 * rpm / 725
 
   smoothTorque = smoothTorque * (1 - alpha) + correctedTorque * alpha
   smoothPower = smoothPower * (1 - alpha) + correctedPower * alpha
 
-  local displayTorque = math.floor(smoothTorque / 5 + 0.5) * 5
-  local displayPower = math.floor(smoothPower / 5 + 0.5) * 5
+  local displayTorque = math.floor((smoothTorque * 1.15) / 1 + 0.5) * 1
+  local displayPower = math.floor((smoothPower * 1.15) / 1 + 0.5) * 1
 
   if car.rpm <= 400 then
     displayTorque = 0
