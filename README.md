@@ -61,4 +61,8 @@ simhub variables:
 
 <img width="800" height="360" alt="Screenshot 2025-07-15 183052" src="https://github.com/user-attachments/assets/64050e3c-1429-4eef-9584-f30a221db7bd" />
 
+## Apple CarPlay Dash
+
+![BeFunky-collage](https://github.com/user-attachments/assets/9be10034-4813-4103-ac5f-e7705fc3aa80)
+
 
