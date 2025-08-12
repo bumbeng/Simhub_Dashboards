@@ -62,6 +62,15 @@ simhub variables:
 <img width="800" height="360" alt="Screenshot 2025-07-15 183052" src="https://github.com/user-attachments/assets/64050e3c-1429-4eef-9584-f30a221db7bd" />
 
 ## Apple CarPlay Dash
+ - all files and Instruction included
+ ### Feautures
+  - Car Page shows your current car with current skin and beam on/off
+  - working music player with cover (bottom buttons not working! list button also, because spotify don't allow this)
+  - Control buttons
+  - Odometer
+  - Map zoom
+  - Torque/Power/Boost Gauge
+  - switch between imperial/metric (you must change units directly in Simhub settings)
 
 ![carPlay](https://github.com/user-attachments/assets/72a6f3bc-5a52-4e41-a3d9-a97b4bc8dc4e)
 
