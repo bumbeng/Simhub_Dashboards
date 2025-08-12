@@ -63,9 +63,6 @@ simhub variables:
 
 ## Apple CarPlay Dash
 
-![carPlay](https://github.com/user-attachments/assets/8088c37a-5aa6-42f7-b49e-0106473b3a64)
-
-
-
+![carPlay](https://github.com/user-attachments/assets/72a6f3bc-5a52-4e41-a3d9-a97b4bc8dc4e)
 
 
