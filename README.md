@@ -71,6 +71,8 @@ simhub variables:
   - Map zoom
   - Torque/Power/Boost Gauge
   - switch between imperial/metric (you must change units directly in Simhub settings)
+  - working weather icons
+  - working date from calender button at main screen 
 
 ![carPlay](https://github.com/user-attachments/assets/72a6f3bc-5a52-4e41-a3d9-a97b4bc8dc4e)
 
